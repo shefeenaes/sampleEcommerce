@@ -20,7 +20,7 @@ export default function ProductCard({ product }) {
     <div className="border p-4 rounded shadow-md relative">
       <Toaster position="top-right" />
       <Image
-        src="https://cdn.prod.website-files.com/5e51c674258ffe10d286d30a/5e535d808becbf7162555033_peep-102.svg"
+        src={product.image}
         alt={product.name}
         className="h-40 w-full object-fit mb-2"
         width={100}

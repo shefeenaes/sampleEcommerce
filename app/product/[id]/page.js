@@ -48,7 +48,7 @@ export default function ProductPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 p-6 flex flex-col items-center">
+    <div className="min-h-screen  p-6 flex flex-col items-center">
       <Toaster position="top-right" />
       <div className="max-w-5xl w-full grid md:grid-cols-2 gap-8">
         <div>

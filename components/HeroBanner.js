@@ -5,9 +5,9 @@ import { useEffect, useMemo, useState } from "react";
 
 // Move static data outside the component to avoid re-declaring on every render
 const BANNERS = [
-  { id: "1", image: "/banner/herobanner1.PNG" },
-  { id: "2", image: "/banner/herobanner2.PNG" },
-  { id: "3", image: "/banner/herobanner3.PNG" },
+  { id: "1", image: "/banner/banner1.jpg" },
+  { id: "2", image: "/banner/banner2.jpg" },
+  { id: "3", image: "/banner/banner3.jpg" },
 ];
 
 export default function HeroBanner() {

@@ -6,6 +6,7 @@ export async function GET(request) {
   const categoryId = searchParams.get("categoryId");
   const subCategoryId = searchParams.get("subCategoryId");
   const productId = searchParams.get("productId");
+  const tag = searchParams.get("tag"); // ✅ Add this line
 
   // Case 1: Specific product by productId
   if (productId) {
@@ -23,7 +24,7 @@ export async function GET(request) {
     return Response.json(product);
   }
 
-  // Case 2: List of products based on categoryId and subCategoryId
+  // Case 2: List of products based on categoryId, subCategoryId, or tag
   const filtered = productData.filter((product) => {
     const matchesCategory = categoryId
       ? product.categoryId?.toLowerCase() === categoryId.toLowerCase()
@@ -33,7 +34,11 @@ export async function GET(request) {
       ? product.subCategoryId?.toLowerCase() === subCategoryId.toLowerCase()
       : true;
 
-    return matchesCategory && matchesSubCategory;
+    const matchesTag = tag
+      ? product.tag?.toLowerCase() === tag.toLowerCase()
+      : true;
+
+    return matchesCategory && matchesSubCategory && matchesTag;
   });
 
   return Response.json(filtered);
