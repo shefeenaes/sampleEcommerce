@@ -2,9 +2,15 @@ import CategoryCard from "@/components/CategoryCard";
 import Breadcrumb from "./Breadcrumb";
 
 export default async function CategoryList() {
-  const res = await fetch("http://localhost:3000/api/categories", {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `${
+      process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+    }/api/categories`,
+    {
+      cache: "no-store",
+    }
+  );
+
   const categories = await res.json();
 
   return (

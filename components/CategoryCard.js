@@ -1,17 +1,8 @@
 import Link from "next/link";
+import slugify from "@/lib/utils/slugify";
 import Image from "next/image";
-import Breadcrumb from "./Breadcrumb";
 
 export default function CategoryCard({ name }) {
-  const slugify = (value) => {
-    const str = String(value || "");
-    return str
-      .toLowerCase()
-      .replace(/&/g, "and")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "");
-  };
-
   const slug = slugify(name);
   const imageUrl = `/categories/${slug}.jpg`;
 
