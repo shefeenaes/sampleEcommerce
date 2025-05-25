@@ -2,7 +2,7 @@
 
 ## 🌟 A Stylish E-Commerce Web App Built with Next.js
 
-![FunkySouq Banner](public/screenshots/banner.png)
+![FunkySouq Banner](public/screenshots/banner.PNG)
 
 ---
 
