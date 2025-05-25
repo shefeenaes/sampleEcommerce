@@ -1,18 +1,25 @@
+"use client";
+
 import { create } from "zustand";
 
 export const useCartStore = create((set, get) => ({
   items: [],
   addItem: (product) => {
     const items = get().items;
-    const existing = items.find((i) => i.id === product.id);
+    const existing = items.find(
+      (i) => i.id === product.id && i.size === product.size
+    );
+
     if (existing) {
       set({
         items: items.map((i) =>
-          i.id === product.id ? { ...i, quantity: i.quantity + 1 } : i
+          i.id === product.id && i.size === product.size
+            ? { ...i, quantity: i.quantity + product.quantity }
+            : i
         ),
       });
     } else {
-      set({ items: [...items, { ...product, quantity: 1 }] });
+      set({ items: [...items, { ...product }] });
     }
   },
   removeItem: (id) => {

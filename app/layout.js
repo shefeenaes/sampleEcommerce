@@ -1,19 +1,23 @@
 import InitialLoader from "@/components/InitialLoader";
 import "./globals.css";
 import ClientLayout from "@/components/Layout";
-// In your layout or root component file (e.g. `app/layout.tsx` or `_app.js`)
 import { Jost } from "next/font/google";
 
 const jost = Jost({
-  subsets: ["latin"], // required
-  weight: ["400", "500", "600", "700"], // pick the weights you want
-  variable: "--font-jost", // optional: for using as a CSS variable
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-jost",
   display: "swap",
 });
 
 export const metadata = {
   title: "funkySouq",
   description: "Minimal e-commerce frontend with nested categories and cart",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({ children }) {

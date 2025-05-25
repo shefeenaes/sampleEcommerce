@@ -6,7 +6,7 @@ export async function GET(request) {
   const categoryId = searchParams.get("categoryId");
   const subCategoryId = searchParams.get("subCategoryId");
   const productId = searchParams.get("productId");
-  const tag = searchParams.get("tag"); // ✅ Add this line
+  const tag = searchParams.get("tag");
 
   // Case 1: Specific product by productId
   if (productId) {

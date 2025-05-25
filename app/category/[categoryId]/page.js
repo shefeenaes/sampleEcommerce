@@ -8,7 +8,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import CategorySkeleton from "@/components/ui/CategorySkeleton";
 
-// Function to fetch all categories
 async function fetchCategories() {
   const res = await fetch(
     `${
@@ -20,7 +19,7 @@ async function fetchCategories() {
 }
 
 export default function SubCategoryPage({ params }) {
-  const { categoryId } = use(params); // ✅ This line fixes the warning
+  const { categoryId } = use(params);
 
   const [category, setCategory] = useState(null);
   const [loading, setLoading] = useState(true);

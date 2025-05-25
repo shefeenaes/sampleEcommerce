@@ -33,7 +33,7 @@ export default function ProductCard({ product }) {
           {product.price.toFixed(2)}
         </span>
 
-        <Button href={`/product/${product.id}`} className="mt-3 w-full">
+        <Button href={`/${product.id}`} className="mt-3 w-full">
           View Product
         </Button>
       </div>

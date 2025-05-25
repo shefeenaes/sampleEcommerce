@@ -40,6 +40,7 @@ export default function Breadcrumb() {
                   ? "text-gray-900 font-semibold"
                   : "text-orange-600 hover:text-orange-500 hover:underline"
               }`}
+              scroll={false}
             >
               {c.label}
             </Link>

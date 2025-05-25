@@ -1,15 +1,8 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import Button from "./ui/Button";
-
-// Move static data outside the component to avoid re-declaring on every render
-const BANNERS = [
-  { id: "1", image: "/banner/banner1.jpg" },
-  { id: "2", image: "/banner/banner2.jpg" },
-  { id: "3", image: "/banner/banner3.jpg" },
-];
+import { BANNERS } from "@/data/bannerData";
 
 export default function HeroBanner() {
   const [currentIndex, setCurrentIndex] = useState(0);

@@ -3,18 +3,27 @@
 import { useCartStore } from "@/store/cartStore";
 import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumb";
-import { Trash2 } from "lucide-react";
+import { Trash2, Loader2 } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity } = useCartStore();
+  const [loadingId, setLoadingId] = useState(null);
+
+  const handleRemove = async (id) => {
+    setLoadingId(id);
+    await new Promise((res) => setTimeout(res, 1000));
+    removeItem(id);
+    setLoadingId(null);
+  };
 
   const subtotal = items
     .reduce((sum, i) => sum + i.price * i.quantity, 0)
     .toFixed(2);
 
   return (
-    <div className="min-h-screen p-6">
+    <div className="min-h-screen p-4 sm:p-6">
       <Breadcrumb />
 
       {items.length === 0 ? (
@@ -28,10 +37,10 @@ export default function CartPage() {
           </Link>
         </div>
       ) : (
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Left Side: Cart Items */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {/* Cart Items */}
           <div className="md:col-span-2">
-            <div className="border-b py-2 grid grid-cols-4 font-semibold text-gray-700 text-sm">
+            <div className="hidden sm:grid border-b py-2 grid-cols-4 font-semibold text-gray-700 text-sm">
               <span className="col-span-2">Product</span>
               <span className="text-center">Quantity</span>
               <span className="text-right">Total</span>
@@ -41,10 +50,9 @@ export default function CartPage() {
               {items.map((item) => (
                 <div
                   key={item.id}
-                  className="py-6 grid grid-cols-4 gap-4 items-center"
+                  className="py-6 grid grid-cols-1 sm:grid-cols-4 gap-4 items-center"
                 >
-                  {/* Product Info */}
-                  <div className="col-span-2 flex gap-4">
+                  <div className="sm:col-span-2 flex gap-4">
                     <Image
                       src={item.image}
                       alt={item.name}
@@ -67,7 +75,6 @@ export default function CartPage() {
                     </div>
                   </div>
 
-                  {/* Quantity */}
                   <div className="flex justify-center items-center space-x-2">
                     <button
                       className="border rounded px-2"
@@ -86,7 +93,6 @@ export default function CartPage() {
                     </button>
                   </div>
 
-                  {/* Total + Delete */}
                   <div className="flex items-center justify-end space-x-4">
                     <span className="flex items-center gap-1 text-sm font-medium text-gray-700">
                       <Image
@@ -97,8 +103,12 @@ export default function CartPage() {
                       />
                       {(item.price * item.quantity).toFixed(2)}
                     </span>
-                    <button onClick={() => removeItem(item.id)}>
-                      <Trash2 className="w-4 h-4 text-gray-500 hover:text-red-500" />
+                    <button onClick={() => handleRemove(item.id)}>
+                      {loadingId === item.id ? (
+                        <Loader2 className="animate-spin w-4 h-4 text-red-500" />
+                      ) : (
+                        <Trash2 className="w-4 h-4 text-gray-500 hover:text-red-500" />
+                      )}
                     </button>
                   </div>
                 </div>
@@ -106,7 +116,7 @@ export default function CartPage() {
             </div>
           </div>
 
-          {/* Right Side: Summary Box */}
+          {/* Summary */}
           <div className="bg-gray-50 p-6 rounded-md shadow-sm">
             <div className="border-b pb-4 mb-4">
               <div className="flex justify-between text-sm text-gray-700 mb-2">

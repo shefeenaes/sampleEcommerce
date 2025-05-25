@@ -18,7 +18,6 @@ export default function Newsletter() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="relative bg-orange-400 overflow-hidden  p-6 sm:p-10 md:p-14 mt-10 text-white text-center"
     >
-      {/* Optional abstract background shapes */}
       <div className="absolute inset-0 w-full h-full bg-[url('/newsletterbg.jpg')] bg-cover opacity-10 pointer-events-none"></div>
 
       <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-2 uppercase">
