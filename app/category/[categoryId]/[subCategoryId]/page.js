@@ -19,9 +19,12 @@ export default function SubcategoryPage() {
     async function fetchProducts() {
       setIsLoading(true);
       const res = await fetch(
-        `http://localhost:3000/api/products?categoryId=${categoryId}&subCategoryId=${subCategoryId}`,
+        `${
+          process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+        }/api/products?categoryId=${categoryId}&subCategoryId=${subCategoryId}`,
         { cache: "no-store" }
       );
+
       const data = await res.json();
       setProducts(data);
       setIsLoading(false);
