@@ -11,19 +11,18 @@ export default function HomePage() {
   return (
     <>
       <HeroBanner />
-      <SectionTitle title="Shop by Category" />
+      <SectionTitle title="category" />
       <CategoryList />
 
-      <SectionTitle title="Popular on This Store" />
+      <SectionTitle title="popular" />
       <ProductCarousel category="popular" />
 
-      <SectionTitle title="This Week's Featured" />
+      <SectionTitle title="featured" />
       <ProductCarousel category="featured" />
 
-      <SectionTitle title="Trending Arrivals" />
+      <SectionTitle title="trending" />
       <ProductCarousel category="trending" />
 
-      <SectionTitle title="Customer Reviews" />
       <ReviewCarousel />
 
       <FeatureCards />

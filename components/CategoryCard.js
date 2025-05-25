@@ -18,7 +18,7 @@ export default function CategoryCard({ name }) {
   return (
     <div className="flex flex-col">
       <Link href={`/category/${slug}`}>
-        <div className="min-w-[200px] bg-white rounded shadow hover:shadow-lg transition-transform transform hover:scale-105 p-2 text-center">
+        <div className="min-w-[200px] rounded shadow hover:shadow-lg transition-transform transform hover:scale-105 p-2 text-center">
           <Image
             src={imageUrl}
             alt={name}

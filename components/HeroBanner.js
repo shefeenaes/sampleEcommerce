@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import Button from "./ui/Button";
 
 // Move static data outside the component to avoid re-declaring on every render
 const BANNERS = [
@@ -35,17 +36,37 @@ export default function HeroBanner() {
         priority
       />
       <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-center text-white px-4">
-        <h1 className="text-2xl md:text-4xl font-bold mb-2">
-          Discover the Latest Collections
+        <h1 className="flex text-2xl md:text-4xl font-bold mb-2 items-center justify-center">
+          {/* Mobile: Plain D */}
+          <span className="block md:hidden text-white font-semibold uppercase">
+            Discover the Latest Collections
+          </span>
+
+          {/* Tablet & Desktop: D with Circle + Rest */}
+          <span className="hidden md:flex items-center">
+            {/* D with circle */}
+            <span className="relative inline-flex items-center justify-center">
+              <span
+                className="absolute -top-1 -right-1 sm:-top-1.5 sm:-right-1.5 md:-top-2 md:-right-2 
+                 w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 
+                 rounded-full bg-orange-500 z-0"
+              ></span>
+              <span className="relative z-10 text-lg sm:text-xl md:text-2xl font-semibold tracking-wider text-white">
+                D
+              </span>
+            </span>
+
+            {/* Rest of the title */}
+            <span className="ml-2 text-lg sm:text-xl md:text-2xl font-semibold tracking-wider text-white uppercase">
+              iscover the Latest Collections
+            </span>
+          </span>
         </h1>
+
         <p className="mb-4 text-sm md:text-base">
           Exclusive styles and deals available now
         </p>
-        <Link href="/category">
-          <button className="bg-blue-600 hover:bg-blue-700 px-6 py-2 text-sm rounded">
-            Shop Now
-          </button>
-        </Link>
+        <Button href="/category">Shop Now</Button>
       </div>
     </div>
   );
